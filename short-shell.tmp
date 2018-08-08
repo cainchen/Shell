@@ -1,0 +1,17 @@
+Shell
+========
+
+ps -eo pid,ppid,cmd,time,%mem,%cpu --sort=-%mem | head && ps -eo pid,ppid,cmd,time,%mem,%cpu --sort=-%cpu | head -10
+
+ps -A | grep apache | awk '{print $2}' | xargs kill -9
+
+ps -ef | grep apache | awk '{print $2}' | sudo xargs kill -9
+
+find . -maxdepth 1 -type f -exec cp {} bind/etc/ \;
+
+
+sudo groupadd $name && sudo adduser --system --home /home/$name --shell /bin/bash --disabled-password --force-badname $name && sudo adduser $name $name && sudo mkdir -p /home/$name/.ssh && sudo chown -R $name:$name /home/$name/ && sudo bash -c "cp /home/ubuntu/{.profile,.bashrc} /home/$name/"
+
+
+export name=jenkins
+groupadd $name && adduser --system --home /home/$name --shell /bin/bash --disabled-password --force-badname $name && adduser $name $name && mkdir -p /home/$name/.ssh && chown -R $name:$name /home/$name/ && bash -c "cp ~/{.profile,.bashrc} /home/$name/"

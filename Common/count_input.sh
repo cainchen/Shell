@@ -1,4 +1,22 @@
 #!/bin/bash
+
+### ***************************************************************************
+#
+# No description yet.
+#
+# Dependencies:
+# - No specified
+#
+# Made(Creator)  Cain Chen/CHEN YI CHI
+# Contact:       shu90129@gmail.com
+# Created:       2017
+# Last modified: August 9, 2018
+# Passed(tested) for:
+#   - macOS 10 to 10.13.5
+#   - Ubuntu 14 to 17                                                                                                                                                                                                               
+#
+### **************************************************************************
+
 clear
 rm -f tmp 2&>1
 i=0
