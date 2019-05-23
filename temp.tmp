@@ -1,3 +1,18 @@
 # SSL certificate convert
 # - .pem to .crt
 $ openssl x509 -outform pem -in your-cert.pem -out your-cert.crt
+
+# --- compareca.sh ---
+#!/usr/bin/env bash
+read -p "Input SSL certificate path and file name: " ca_name
+openssl rsa -noout -modulus -in "$ca_name".key |md5sum |cut -d " " -f 1 > ./keymd5
+openssl req -noout -modulus -in "$ca_name".csr |md5sum |cut -d " " -f 1 > ./csrmd5
+openssl x509 -noout -modulus -in "$ca_name".crt |md5sum |cut -d " " -f 1 > ./crtmd5
+diff3 ./keymd5 ./csrmd5 ./crtmd5
+if [ $? -eq '0' ];
+then
+ printf "\nNo error!!\n"
+else
+ printf "\nFail!!\n"
+fi
+# --- End ---
